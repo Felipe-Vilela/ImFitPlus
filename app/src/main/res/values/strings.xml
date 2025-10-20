@@ -2,5 +2,25 @@
     <string name="app_name">ImFitPlus</string>
     <string name="texto_boas_vindas">Descubra seu perfil de saúde e receba recomendações personalizadas.</string>
     <string name="boas_vindas_subtitle">Boas-vindas</string>
+    <string name="dados_pessoais_subtitle">Dados Pessoais</string>
     <string name="comece_aqui">Comece aqui</string>
+    <string name="titulo_dados_pessoais">Insira Seus Dados</string>
+    <string name="hint_nome">Nome Completo</string>
+    <string name="hint_idade">Idade</string>
+    <string name="label_sexo">Sexo</string>
+    <string name="sexo_m">Masculino</string>
+    <string name="sexo_f">Feminino</string>
+    <string name="hint_peso">Peso</string>
+    <string name="hint_altura">Altura</string>
+    <string name="label_atividade">Nível de Atividade Física</string>
+    <string name="calcular_imc_btn">Calcular IMC</string>
+    <string name="erro_campo_vazio">Preencha todos os campos corretamente!</string>
+    <string name="erro_altura_invalida">Altura deve ser maior que 0.5m.</string>
+
+    <string-array name="niveis_atividade">
+        <item>Sedentário (0 dias/semana)</item>
+        <item>Leve (1–3 dias/semana)</item>
+        <item>Moderado (3–5 dias/semana)</item>
+        <item>Intenso (6–7 dias/semana)</item>
+    </string-array>
 </resources>

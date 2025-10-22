@@ -1,6 +1,8 @@
 package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +30,28 @@ class DadosPessoaisActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         adpb.atividadeSpinner.adapter = adapter
 
+        adpb.atividadeSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val nivelAtividade = parent?.getItemAtPosition(position).toString()
+
+                    Toast.makeText(
+                        this@DadosPessoaisActivity,
+                        "Você selecionou: $nivelAtividade",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+            }
+
         with (adpb) {
             calcularImcBt.setOnClickListener {
 
@@ -35,6 +59,7 @@ class DadosPessoaisActivity : AppCompatActivity() {
                 val idadeStr = idadeEt.text.toString().trim()
                 val pesoStr = pesoEt.text.toString().trim()
                 val alturaStr = alturaEt.text.toString().trim()
+                val nivelAtividadeSelecionado = atividadeSpinner.selectedItem.toString()
 
                 if (nome.isBlank() || idadeStr.isBlank() || pesoStr.isBlank() || alturaStr.isBlank()) {
                     Toast.makeText(this@DadosPessoaisActivity, R.string.erro_campo_vazio, Toast.LENGTH_SHORT).show()

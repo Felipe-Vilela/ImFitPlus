@@ -1,5 +1,6 @@
 package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -36,6 +37,11 @@ class ResultadoImcActivity : AppCompatActivity() {
             val categoria = calcularCategoriaImc(dados.imc!!)
             arib.categoriaTv.text = getString(R.string.resultado_categoria, categoria)
         }
+
+        arib.voltarBt.setOnClickListener {
+            finish()
+        }
+
     }
 
     private fun calcularCategoriaImc(imc: Double): String {

@@ -16,6 +16,13 @@
     <string name="calcular_imc_btn">Calcular IMC</string>
     <string name="erro_campo_vazio">Preencha todos os campos corretamente!</string>
     <string name="erro_altura_invalida">Altura deve ser maior que 0.5m.</string>
+    <string name="resultado_imc_subtitle">Resultado IMC</string>
+    <string name="resultados">Resultados</string>
+    <string name="resultado_nome">Nome</string>
+    <string name="resultado_imc">IMC</string>
+    <string name="resultado_categoria">Categoria</string>
+    <string name="calcular_gasto_calorico_btn">Calcular Gasto Calórico</string>
+    <string name="voltar_btn">Voltar</string>
 
     <string-array name="niveis_atividade">
         <item>Sedentário (0 dias/semana)</item>

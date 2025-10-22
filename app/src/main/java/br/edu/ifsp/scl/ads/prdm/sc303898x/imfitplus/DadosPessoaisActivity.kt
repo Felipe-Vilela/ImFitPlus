@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityDadosPessoaisBinding
+import kotlin.math.pow
 
 class DadosPessoaisActivity : AppCompatActivity() {
 
@@ -74,6 +75,10 @@ class DadosPessoaisActivity : AppCompatActivity() {
                     Toast.makeText(this@DadosPessoaisActivity, R.string.erro_altura_invalida, Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
+
+                val sexo = if (masculinoRb.isChecked) "M" else "F"
+                val atividade = nivelAtividadeSelecionado.split(" (").first()
+                val imcCalculado = peso / altura.pow(2)
             }
         }
     }

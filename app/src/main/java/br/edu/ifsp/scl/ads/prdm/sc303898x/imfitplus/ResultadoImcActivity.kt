@@ -1,12 +1,10 @@
 package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus
 
+import android.os.Build
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityDadosPessoaisBinding
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityResultadoImcBinding
+import java.text.DecimalFormat
 
 class ResultadoImcActivity : AppCompatActivity() {
 
@@ -16,5 +14,41 @@ class ResultadoImcActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(arib.root)
+
+        setSupportActionBar(arib.toolbarIn.toolbar)
+        supportActionBar?.subtitle = getString(R.string.resultado_imc_subtitle)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val perfil: DadosPessoais? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(Constant.EXTRA_PERFIL, DadosPessoais::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(Constant.EXTRA_PERFIL)
+        }
+
+        perfil?.let { dados ->
+
+            arib.nameTv.text = getString(R.string.resultado_nome, dados.nome)
+
+            val imcFormatado = DecimalFormat("0.00").format(dados.imc)
+            arib.imcTv.text = getString(R.string.resultado_imc, imcFormatado)
+
+            val categoria = calcularCategoriaImc(dados.imc!!)
+            arib.categoriaTv.text = getString(R.string.resultado_categoria, categoria)
+        }
+    }
+
+    private fun calcularCategoriaImc(imc: Double): String {
+        return when {
+            imc < 18.5 -> getString(R.string.abaixo_do_peso)
+            imc < 25.0 -> getString(R.string.normal)
+            imc < 30.0 -> getString(R.string.sobrepeso)
+            else -> getString(R.string.obesidade)
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

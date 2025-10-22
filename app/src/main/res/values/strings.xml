@@ -18,11 +18,15 @@
     <string name="erro_altura_invalida">Altura deve ser maior que 0.5m.</string>
     <string name="resultado_imc_subtitle">Resultado IMC</string>
     <string name="resultados">Resultados</string>
-    <string name="resultado_nome">Nome</string>
-    <string name="resultado_imc">IMC</string>
-    <string name="resultado_categoria">Categoria</string>
+    <string name="resultado_nome">Nome: %s</string>
+    <string name="resultado_imc">IMC: %s</string>
+    <string name="resultado_categoria">Categoria: %s</string>
     <string name="calcular_gasto_calorico_btn">Calcular Gasto Calórico</string>
     <string name="voltar_btn">Voltar</string>
+    <string name="abaixo_do_peso">Abaixo do peso</string>
+    <string name="normal">Normal</string>
+    <string name="sobrepeso">Sobrepeso</string>
+    <string name="obesidade">Obesidade</string>
 
     <string-array name="niveis_atividade">
         <item>Sedentário (0 dias/semana)</item>

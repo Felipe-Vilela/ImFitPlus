@@ -1,9 +1,9 @@
 package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityDadosPessoaisBinding
@@ -71,6 +71,21 @@ class DadosPessoaisActivity : AppCompatActivity() {
                 val sexo = if (masculinoRb.isChecked) "M" else "F"
                 val atividade = nivelAtividadeSelecionado.split(" (").first()
                 val imcCalculado = peso / altura.pow(2)
+
+                DadosPessoais(
+                    nome = nome,
+                    idade = idade,
+                    sexo = sexo,
+                    altura = altura,
+                    peso = peso,
+                    nivelAtividade = atividade,
+                    imc = imcCalculado
+                ).let { perfil ->
+                    Intent(this@DadosPessoaisActivity, ResultadoImcActivity::class.java).apply {
+                        putExtra(Constant.EXTRA_PERFIL, perfil)
+                        startActivity(this)
+                    }
+                }
             }
         }
     }

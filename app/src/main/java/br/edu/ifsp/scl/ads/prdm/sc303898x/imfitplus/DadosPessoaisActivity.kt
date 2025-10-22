@@ -23,14 +23,6 @@ class DadosPessoaisActivity : AppCompatActivity() {
         supportActionBar?.subtitle = getString(R.string.dados_pessoais_subtitle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.niveis_atividade,
-            android.R.layout.simple_spinner_item
-        )
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        adpb.atividadeSpinner.adapter = adapter
-
         adpb.atividadeSpinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(

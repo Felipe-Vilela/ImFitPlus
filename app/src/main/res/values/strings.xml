@@ -27,6 +27,11 @@
     <string name="normal">Normal</string>
     <string name="sobrepeso">Sobrepeso</string>
     <string name="obesidade">Obesidade</string>
+    <string name="gasto_calorico_subtitle">Gasto Calórico Diário</string>
+    <string name="resultado_tmb">Taxa Metabólica Basal: %s kcal/dia</string>
+    <string name="resultado_gcd">Gasto Calórico Diário: %s kcal/dia</string>
+    <string name="taxa_metabolica_basal">Taxa Metabólica Basal</string>
+    <string name="calcular_peso_ideal">Calcular peso ideal</string>
 
     <string-array name="niveis_atividade">
         <item>Sedentário (0 dias/semana)</item>

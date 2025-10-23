@@ -7,4 +7,63 @@
     android:layout_height="match_parent"
     tools:context=".GastoCaloricoActivity">
 
+    <include
+        android:id="@+id/toolbar_in"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/taxa_metabolica_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/taxa_metabolica_basal"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/design_default_color_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_in" />
+
+
+    <TextView
+        android:id="@+id/gcd_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/taxa_metabolica_tv"
+        tools:text="Gasto Calórico Diário: 2000 kcal/dia" />
+
+    <TextView
+        android:id="@+id/tmb_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gcd_tv"
+        tools:text="Taxa Metabólica Basal: 1500 kcal/dia" />
+
+    <Button
+        android:id="@+id/peso_ideal_bt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/calcular_peso_ideal"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tmb_tv" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,8 +40,7 @@ class DadosPessoaisActivity : AppCompatActivity() {
                     position: Int,
                     id: Long
                 ) {
-                    val nivelAtividade = parent?.getItemAtPosition(position).toString()
-
+                    val nivelAtividade = resources.getStringArray(R.array.niveis_atividade)[position]
                     Toast.makeText(
                         this@DadosPessoaisActivity,
                         "Você selecionou: $nivelAtividade",

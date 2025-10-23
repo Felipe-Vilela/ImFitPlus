@@ -1,7 +1,10 @@
 package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityGastoCaloricoBinding
 import java.text.DecimalFormat
@@ -14,6 +17,8 @@ class GastoCaloricoActivity : AppCompatActivity() {
 
     lateinit var dadosPessoais: DadosPessoais
 
+    private lateinit var piarl: ActivityResultLauncher<Intent>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(agcb.root)
@@ -21,6 +26,10 @@ class GastoCaloricoActivity : AppCompatActivity() {
         setSupportActionBar(agcb.toolbarIn.toolbar)
         supportActionBar?.subtitle = getString(R.string.gasto_calorico_subtitle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        piarl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+                result -> if (result.resultCode == RESULT_OK){}
+        }
 
         dadosPessoais = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra(Constant.EXTRA_PERFIL, DadosPessoais::class.java)!!
@@ -43,6 +52,13 @@ class GastoCaloricoActivity : AppCompatActivity() {
             agcb.tmbTv.text = getString(R.string.resultado_tmb, tmbFormatado)
             agcb.gcdTv.text = getString(R.string.resultado_gcd, gcdFormatado)
         }
+
+        agcb.pesoIdealBt.setOnClickListener {
+            piarl.launch(Intent(this, PesoIdealActivity::class.java).apply {
+                putExtra(Constant.EXTRA_PERFIL, dadosPessoais)
+            })
+        }
+
     }
 
     private fun obterFatorAtividade(nivel: String): Double {

@@ -42,6 +42,15 @@ class ResultadoImcActivity : AppCompatActivity() {
             finish()
         }
 
+        arib.gastoCaloricoBt.setOnClickListener {
+            perfil?.let { dados ->
+                Intent(this, GastoCaloricoActivity::class.java).apply {
+                    putExtra(Constant.EXTRA_PERFIL, dados)
+                    startActivity(this)
+                }
+            }
+        }
+
     }
 
     private fun calcularCategoriaImc(imc: Double): String {

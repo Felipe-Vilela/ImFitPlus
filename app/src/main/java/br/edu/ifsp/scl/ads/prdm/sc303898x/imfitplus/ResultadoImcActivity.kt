@@ -3,6 +3,8 @@ package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityResultadoImcBinding
 import java.text.DecimalFormat
@@ -14,6 +16,8 @@ class ResultadoImcActivity : AppCompatActivity() {
     }
     lateinit var dadosPessoais: DadosPessoais
 
+    private lateinit var gcarl: ActivityResultLauncher<Intent>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(arib.root)
@@ -21,6 +25,10 @@ class ResultadoImcActivity : AppCompatActivity() {
         setSupportActionBar(arib.toolbarIn.toolbar)
         supportActionBar?.subtitle = getString(R.string.resultado_imc_subtitle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        gcarl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+                result -> if (result.resultCode == RESULT_OK){}
+        }
 
         dadosPessoais = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra(Constant.EXTRA_PERFIL, DadosPessoais::class.java)!!
@@ -44,10 +52,9 @@ class ResultadoImcActivity : AppCompatActivity() {
         }
 
         arib.gastoCaloricoBt.setOnClickListener {
-            Intent(this, GastoCaloricoActivity::class.java).apply {
+            gcarl.launch(Intent(this, GastoCaloricoActivity::class.java).apply {
                 putExtra(Constant.EXTRA_PERFIL, dadosPessoais)
-                startActivity(this)
-            }
+            })
         }
 
     }

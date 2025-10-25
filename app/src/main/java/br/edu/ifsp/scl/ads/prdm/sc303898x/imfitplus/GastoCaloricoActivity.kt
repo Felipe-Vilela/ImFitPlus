@@ -59,6 +59,10 @@ class GastoCaloricoActivity : AppCompatActivity() {
             })
         }
 
+        agcb.voltarBt.setOnClickListener {
+            finish()
+        }
+
     }
 
     private fun obterFatorAtividade(nivel: String): Double {

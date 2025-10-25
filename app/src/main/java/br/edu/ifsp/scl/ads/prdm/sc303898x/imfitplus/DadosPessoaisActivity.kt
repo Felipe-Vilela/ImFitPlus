@@ -61,6 +61,10 @@ class DadosPessoaisActivity : AppCompatActivity() {
 
         }
 
+        adpb.voltarBt.setOnClickListener {
+            finish()
+        }
+
     }
 
     private fun validarEntradas(): DadosPessoais? {

@@ -74,9 +74,9 @@ class GastoCaloricoActivity : AppCompatActivity() {
 
     private fun calcularTmb(peso: Double, altura: Double, idade: Int, sexo: String): Double {
         return if (sexo.uppercase() == "M") {
-            (10 * peso) + (6.25 * (altura * 100)) - (5 * idade) + 5
+            66 + (13.7 * peso) + (5 * altura * 100) - (6.8 * idade)
         } else {
-            (10 * peso) + (6.25 * (altura * 100)) - (5 * idade) - 161
+            655 + (9.6 * peso) + (1.8 * altura * 100) - (4.7 * idade)
         }
     }
 

@@ -33,7 +33,8 @@
     <string name="taxa_metabolica_basal">Taxa Metabólica Basal</string>
     <string name="calcular_peso_ideal">Calcular peso ideal</string>
     <string name="peso_ideal_subtitle">Peso Ideal</string>
-    <string name="seu_peso_ideal">Seu peso ideal é:</string>
+    <string name="seu_peso_ideal">Seu peso ideal é: %s kg</string>
+    <string name="diferenca_peso">Diferença para o peso atual: %s kg</string>
 
     <string-array name="niveis_atividade">
         <item>Sedentário (0 dias/semana)</item>

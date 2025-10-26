@@ -37,21 +37,18 @@ class GastoCaloricoActivity : AppCompatActivity() {
             intent.getParcelableExtra<DadosPessoais>(Constant.EXTRA_PERFIL)!!
         }
 
-        dadosPessoais.let { dados ->
+        val fatorAtividade = obterFatorAtividade(dadosPessoais.nivelAtividade)
+        val tmb = calcularTmb(dadosPessoais.peso, dadosPessoais.altura, dadosPessoais.idade, dadosPessoais.sexo)
+        val gcd = calcularGcd(tmb, fatorAtividade)
 
-            val fatorAtividade = obterFatorAtividade(dados.nivelAtividade)
-            val tmb = calcularTmb(dados.peso, dados.altura, dados.idade, dados.sexo)
-            val gcd = calcularGcd(tmb, fatorAtividade)
+        dadosPessoais.tmb = tmb
+        dadosPessoais.gastoCalorico = gcd
 
-            dados.tmb = tmb
-            dados.gastoCalorico = gcd
+        val tmbFormatado = DecimalFormat("0").format(tmb)
+        val gcdFormatado = DecimalFormat("0").format(gcd)
 
-            val tmbFormatado = DecimalFormat("0").format(tmb)
-            val gcdFormatado = DecimalFormat("0").format(gcd)
-
-            agcb.tmbTv.text = getString(R.string.resultado_tmb, tmbFormatado)
-            agcb.gcdTv.text = getString(R.string.resultado_gcd, gcdFormatado)
-        }
+        agcb.tmbTv.text = getString(R.string.resultado_tmb, tmbFormatado)
+        agcb.gcdTv.text = getString(R.string.resultado_gcd, gcdFormatado)
 
         agcb.pesoIdealBt.setOnClickListener {
             piarl.launch(Intent(this, PesoIdealActivity::class.java).apply {

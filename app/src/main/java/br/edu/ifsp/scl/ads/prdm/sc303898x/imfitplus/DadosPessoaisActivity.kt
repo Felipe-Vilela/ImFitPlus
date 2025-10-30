@@ -54,6 +54,11 @@ class DadosPessoaisActivity : AppCompatActivity() {
             }
 
         adpb.calcularImcBt.setOnClickListener {
+            if (!adpb.confirmarCb.isChecked) {
+                Toast.makeText(this, "Confirme que os dados estão corretos antes de prosseguir.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val dados = validarEntradas() ?: return@setOnClickListener
             riarl.launch(Intent(this, ResultadoImcActivity::class.java).apply {
                 putExtra(Constant.EXTRA_PERFIL, dados)

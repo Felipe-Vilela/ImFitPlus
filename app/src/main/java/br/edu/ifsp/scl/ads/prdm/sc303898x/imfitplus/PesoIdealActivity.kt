@@ -20,7 +20,6 @@ class PesoIdealActivity : AppCompatActivity() {
 
         setSupportActionBar(apib.toolbarIn.toolbar)
         supportActionBar?.subtitle = getString(R.string.peso_ideal_subtitle)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         dadosPessoais = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra(Constant.EXTRA_PERFIL, DadosPessoais::class.java)!!
@@ -51,10 +50,5 @@ class PesoIdealActivity : AppCompatActivity() {
 
     private fun calcularPesoIdeal(altura: Double): Double {
         return 22 * (altura * altura)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        finish()
-        return true
     }
 }

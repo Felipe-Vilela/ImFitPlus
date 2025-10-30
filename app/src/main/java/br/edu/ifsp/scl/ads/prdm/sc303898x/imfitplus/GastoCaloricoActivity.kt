@@ -25,7 +25,6 @@ class GastoCaloricoActivity : AppCompatActivity() {
 
         setSupportActionBar(agcb.toolbarIn.toolbar)
         supportActionBar?.subtitle = getString(R.string.gasto_calorico_subtitle)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         piarl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
                 result -> if (result.resultCode == RESULT_OK){}
@@ -83,10 +82,5 @@ class GastoCaloricoActivity : AppCompatActivity() {
 
     private fun calcularGcd(tmb: Double, fatorAtividade: Double): Double {
         return tmb * fatorAtividade
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        finish()
-        return true
     }
 }

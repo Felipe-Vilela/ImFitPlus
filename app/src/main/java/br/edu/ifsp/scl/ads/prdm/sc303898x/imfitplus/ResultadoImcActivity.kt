@@ -24,7 +24,6 @@ class ResultadoImcActivity : AppCompatActivity() {
 
         setSupportActionBar(arib.toolbarIn.toolbar)
         supportActionBar?.subtitle = getString(R.string.resultado_imc_subtitle)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         gcarl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
                 result -> if (result.resultCode == RESULT_OK){}
@@ -66,10 +65,5 @@ class ResultadoImcActivity : AppCompatActivity() {
             imc < 30.0 -> getString(R.string.sobrepeso)
             else -> getString(R.string.obesidade)
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        finish()
-        return true
     }
 }

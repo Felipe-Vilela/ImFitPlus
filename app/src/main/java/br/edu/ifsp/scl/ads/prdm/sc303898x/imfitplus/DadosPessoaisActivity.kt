@@ -25,8 +25,6 @@ class DadosPessoaisActivity : AppCompatActivity() {
 
         setSupportActionBar(adpb.toolbarIn.toolbar)
         supportActionBar?.subtitle = getString(R.string.dados_pessoais_subtitle)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
 
         riarl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
                 result -> if (result.resultCode == RESULT_OK){}
@@ -109,10 +107,5 @@ class DadosPessoaisActivity : AppCompatActivity() {
     }
     private fun calcularImc(peso: Double, altura: Double): Double {
         return peso / altura.pow(2)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        finish()
-        return true
     }
 }

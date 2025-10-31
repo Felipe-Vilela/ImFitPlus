@@ -55,6 +55,17 @@
         tools:text="Diferença para o peso atual: +2,44 kg" />
 
     <Button
+        android:id="@+id/resumo_saude_bt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/resumo_saude_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/diferenca_peso_resultado_tv" />
+
+    <Button
         android:id="@+id/voltar_bt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -63,6 +74,6 @@
         android:text="@string/voltar_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/diferenca_peso_resultado_tv" />
+        app:layout_constraintTop_toBottomOf="@id/resumo_saude_bt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

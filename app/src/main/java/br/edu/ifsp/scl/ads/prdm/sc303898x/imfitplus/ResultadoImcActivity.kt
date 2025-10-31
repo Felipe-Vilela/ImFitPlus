@@ -46,6 +46,7 @@ class ResultadoImcActivity : AppCompatActivity() {
         }
 
 
+
         arib.voltarBt.setOnClickListener {
             finish()
         }

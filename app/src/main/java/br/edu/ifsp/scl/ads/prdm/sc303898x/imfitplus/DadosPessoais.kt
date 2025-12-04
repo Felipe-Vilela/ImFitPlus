@@ -14,5 +14,6 @@ data class DadosPessoais(
     var imc: Double? = null,
     var tmb: Double? = null,
     var gastoCalorico: Double? = null,
-    var pesoIdeal: Double? = null
+    var pesoIdeal: Double? = null,
+    var categoriaImc: String? = null
 ) : Parcelable

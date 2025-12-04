@@ -108,6 +108,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gasto_calorico_tv" />
 
+    <Button
+        android:id="@+id/voltar_bt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/voltar_btn"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recomendacao_agua_tv" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

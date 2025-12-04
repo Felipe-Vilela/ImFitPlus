@@ -42,6 +42,7 @@ class ResultadoImcActivity : AppCompatActivity() {
             arib.imcTv.text = getString(R.string.resultado_imc, imcFormatado)
 
             val categoria = calcularCategoriaImc(dados.imc!!)
+            dados.categoriaImc = categoria
             arib.categoriaTv.text = getString(R.string.resultado_categoria, categoria)
         }
 

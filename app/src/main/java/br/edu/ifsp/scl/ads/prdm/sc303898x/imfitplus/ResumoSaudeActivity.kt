@@ -2,10 +2,7 @@ package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus
 
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityResumoSaudeBinding
 import java.text.DecimalFormat
 
@@ -31,14 +28,26 @@ class ResumoSaudeActivity : AppCompatActivity() {
         }
 
         dadosPessoais.let { dados ->
-            arsb.nameTv.text = getString(R.string.resultado_nome, dados.nome)
-
             val imcFormatado = DecimalFormat("0.00").format(dados.imc!!)
+            val pesoIdealFormatado = DecimalFormat("0.00").format(dados.pesoIdeal!!)
+            val gcdFormatado = DecimalFormat("0").format(dados.gastoCalorico!!)
+            val recomendacaoAgua = calcularRecomendacaoAgua()
+            val recomendacaoAguaFormatado = DecimalFormat("0.0").format(recomendacaoAgua)
+
+            arsb.nameTv.text = getString(R.string.resultado_nome, dados.nome)
             arsb.imcTv.text = getString(R.string.resultado_imc, imcFormatado)
+            arsb.categoriaTv.text = getString(R.string.resultado_categoria, dados.categoriaImc)
+            arsb.pesoIdealTv.text = getString(R.string.peso_ideal, pesoIdealFormatado)
+            arsb.gastoCaloricoTv.text = getString(R.string.resultado_gcd, gcdFormatado)
+            arsb.recomendacaoAguaTv.text = getString(R.string.resultado_gcd, recomendacaoAguaFormatado)
 
         }
 
-
-
+        arsb.voltarBt.setOnClickListener {
+            finish()
+        }
+    }
+    private fun calcularRecomendacaoAgua(): Double {
+        return (dadosPessoais.peso * 35) /1000
     }
 }

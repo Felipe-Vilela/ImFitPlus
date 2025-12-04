@@ -1,8 +1,11 @@
-package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus
+package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.ui
 
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.Constant
+import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.DadosPessoais
+import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.R
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityResumoSaudeBinding
 import java.text.DecimalFormat
 

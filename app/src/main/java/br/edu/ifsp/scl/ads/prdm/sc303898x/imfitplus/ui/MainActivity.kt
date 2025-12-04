@@ -1,8 +1,9 @@
-package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus
+package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.R
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityMainBinding
 
 

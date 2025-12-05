@@ -40,6 +40,7 @@
     <string name="resumo_saude_subtitle">Resumo da Saúde</string>
     <string name="recomendacao_ingestao_agua">Recomendação de ingestão Água: %s L</string>
     <string name="resumo_saude_btn">Resumo Saúde</string>
+    <string name="historico">Histórico</string>
 
     <string-array name="niveis_atividade">
         <item>Sedentário (0 dias/semana)</item>

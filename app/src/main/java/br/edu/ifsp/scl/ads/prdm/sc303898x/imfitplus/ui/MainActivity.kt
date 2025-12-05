@@ -25,5 +25,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        amb.historicoBt.setOnClickListener {
+            var intent = Intent(this, HistoricoActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

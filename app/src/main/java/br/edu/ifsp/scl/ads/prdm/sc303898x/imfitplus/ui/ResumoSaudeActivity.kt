@@ -36,6 +36,7 @@ class ResumoSaudeActivity : AppCompatActivity() {
             val gcdFormatado = DecimalFormat("0").format(dados.gastoCalorico!!)
             val recomendacaoAgua = calcularRecomendacaoAgua()
             val recomendacaoAguaFormatado = DecimalFormat("0.0").format(recomendacaoAgua)
+            dados.recomendacaoAgua = recomendacaoAgua
 
             arsb.nameTv.text = getString(R.string.resultado_nome, dados.nome)
             arsb.imcTv.text = getString(R.string.resultado_imc, imcFormatado)
@@ -43,7 +44,6 @@ class ResumoSaudeActivity : AppCompatActivity() {
             arsb.pesoIdealTv.text = getString(R.string.peso_ideal, pesoIdealFormatado)
             arsb.gastoCaloricoTv.text = getString(R.string.resultado_gcd, gcdFormatado)
             arsb.recomendacaoAguaTv.text = getString(R.string.resultado_gcd, recomendacaoAguaFormatado)
-
         }
 
         arsb.voltarBt.setOnClickListener {

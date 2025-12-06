@@ -35,7 +35,8 @@ class HistoricoActivity : AppCompatActivity() {
                 tmb = null,
                 gastoCalorico = null,
                 pesoIdeal = null,
-                categoriaImc = "Normal"
+                categoriaImc = "Normal",
+                recomendacaoAgua = 2.5
             ),
             DadosPessoais(
                 nome = "Maria",
@@ -48,7 +49,8 @@ class HistoricoActivity : AppCompatActivity() {
                 tmb = null,
                 gastoCalorico = null,
                 pesoIdeal = null,
-                categoriaImc = "Obesidade"
+                categoriaImc = "Obesidade" ,
+                recomendacaoAgua = 2.5
             )
         )
 

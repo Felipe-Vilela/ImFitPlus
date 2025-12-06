@@ -49,8 +49,6 @@ class ResultadoImcActivity : AppCompatActivity() {
             arib.categoriaTv.text = getString(R.string.resultado_categoria, categoria)
         }
 
-
-
         arib.voltarBt.setOnClickListener {
             finish()
         }

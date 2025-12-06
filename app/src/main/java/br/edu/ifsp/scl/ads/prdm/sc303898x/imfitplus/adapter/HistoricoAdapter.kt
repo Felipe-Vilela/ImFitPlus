@@ -41,6 +41,7 @@ class HistoricoAdapter(
             gastoTv.text = "Gasto calórico: ${item.gastoCalorico}"
             pesoIdealTv.text = "Peso ideal: ${item.pesoIdeal}"
             categoriaTv.text = "Categoria: ${item.categoriaImc}"
+            recomendacaoAguaTv.text = "Recomendação de água: ${item.recomendacaoAgua} L"
         }
     }
 }

@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class DadosPessoais(
+    val id: Int? = -1,
     val nome: String,
     val idade: Int,
     val sexo: String,

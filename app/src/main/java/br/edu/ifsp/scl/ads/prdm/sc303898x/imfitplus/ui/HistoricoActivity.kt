@@ -1,10 +1,12 @@
 package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.ui
 
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.R
+import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.controller.HistoricoController
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityHistoricoBinding
+import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.Constant.EXTRA_PERFIL
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.DadosPessoais
 
 class HistoricoActivity : AppCompatActivity() {
@@ -13,8 +15,15 @@ class HistoricoActivity : AppCompatActivity() {
         ActivityHistoricoBinding.inflate(layoutInflater)
     }
 
-    private lateinit var historicoAdapter: HistoricoAdapter
-    private var listaHistorico = ArrayList<DadosPessoais>()
+    private val historicoList: MutableList<DadosPessoais> = mutableListOf()
+
+    private val historicoAdapter: HistoricoAdapter by lazy {
+        HistoricoAdapter(this, historicoList)
+    }
+
+    private val historicoController: HistoricoController by lazy {
+        HistoricoController(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,44 +32,28 @@ class HistoricoActivity : AppCompatActivity() {
         setSupportActionBar(ahb.toolbarIn.toolbar)
         supportActionBar?.subtitle = getString(R.string.historico)
 
-        listaHistorico = arrayListOf(
-            DadosPessoais(
-                nome = "João",
-                idade = 25,
-                sexo = "Masculino",
-                altura = 1.80,
-                peso = 80.0,
-                nivelAtividade = "Moderado",
-                imc = 24.7,
-                tmb = null,
-                gastoCalorico = null,
-                pesoIdeal = null,
-                categoriaImc = "Normal",
-                recomendacaoAgua = 2.5
-            ),
-            DadosPessoais(
-                nome = "Maria",
-                idade = 30,
-                sexo = "Feminino",
-                altura = 1.65,
-                peso = 92.0,
-                nivelAtividade = "Baixo",
-                imc = 33.8,
-                tmb = null,
-                gastoCalorico = null,
-                pesoIdeal = null,
-                categoriaImc = "Obesidade" ,
-                recomendacaoAgua = 2.5
-            )
-        )
+        ahb.historicoLv.adapter = historicoAdapter
 
-        historicoAdapter = HistoricoAdapter(listaHistorico)
 
-        ahb.historicoRv.apply {
-            layoutManager = LinearLayoutManager(this@HistoricoActivity)
-            adapter = historicoAdapter
+        val dadosPessoais: DadosPessoais? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent?.getParcelableExtra(EXTRA_PERFIL, DadosPessoais::class.java)
+        } else {
+            intent?.getParcelableExtra<DadosPessoais>(EXTRA_PERFIL)
         }
 
-        ahb.voltarBt.setOnClickListener { finish() }
+        dadosPessoais?.let { dp ->
+            val position = historicoList.indexOfFirst { it.id == dp.id }
+            if (position == -1) {
+                historicoList.add(dp)
+                historicoController.insertHistorico(dp)
+            } else {
+                historicoList[position] = dp
+            }
+            historicoAdapter.notifyDataSetChanged()
+        }
+
+        ahb.voltarBt.setOnClickListener {
+            finish()
+        }
     }
 }

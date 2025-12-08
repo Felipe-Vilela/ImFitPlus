@@ -92,16 +92,27 @@ class HistoricoSqlite(context: Context): HistoricoDao {
     }
 
     override fun buscarHistoricos(): MutableList<DadosPessoais> {
-        TODO("Not yet implemented")
+        val historicoList: MutableList<DadosPessoais> = mutableListOf()
+        val cursor = historicoDataBase.rawQuery("SELECT * FROM $HISTORICO_TABLE;", null)
+
+        while (cursor.moveToNext()){
+            historicoList.add(cursor.toDadosPessoais())
+        }
+
+        return historicoList
     }
 
-    override fun atualizarHistorico(dadosPessoais: DadosPessoais): Int {
-        TODO("Not yet implemented")
-    }
+    override fun atualizarHistorico(dadosPessoais: DadosPessoais): Int = historicoDataBase.update(
+        HISTORICO_TABLE,
+        dadosPessoais.toContentValues(),
+        "$ID_COLUMN = ?",
+        arrayOf(dadosPessoais.id.toString()))
 
-    override fun deleteHistorico(id: Int): Int {
-        TODO("Not yet implemented")
-    }
+    override fun deleteHistorico(id: Int): Int = historicoDataBase.delete(
+        HISTORICO_TABLE,
+        "$ID_COLUMN = ?",
+        arrayOf(id.toString())
+    )
 
     private fun DadosPessoais.toContentValues() = ContentValues().apply {
         put(NOME_COLUMN, nome)

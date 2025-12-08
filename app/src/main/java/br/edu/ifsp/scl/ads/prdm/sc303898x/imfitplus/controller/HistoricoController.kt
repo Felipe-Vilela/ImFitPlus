@@ -9,4 +9,8 @@ class HistoricoController(historicoActivity: HistoricoActivity) {
     private val historicoDao: HistoricoDao = HistoricoSqlite(historicoActivity)
 
     fun insertHistorico(dadosPessoais: DadosPessoais) = historicoDao.criarHistorico(dadosPessoais)
+    fun getHistorico(id: Int) = historicoDao.buscarHistorico(id)
+    fun getHistoricos() = historicoDao.buscarHistoricos()
+    fun modifyHistorico(dadosPessoais: DadosPessoais) = historicoDao.atualizarHistorico(dadosPessoais)
+    fun removeHistorico(id: Int) = historicoDao.deleteHistorico(id)
 }

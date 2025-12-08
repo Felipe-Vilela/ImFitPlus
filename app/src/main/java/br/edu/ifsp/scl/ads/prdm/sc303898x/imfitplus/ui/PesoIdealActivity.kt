@@ -40,9 +40,9 @@ class PesoIdealActivity : AppCompatActivity() {
         }
 
         dadosPessoais.let { dados ->
-            val pesoIdeal = calcularPesoIdeal(dados.altura)
+            val pesoIdeal = calcularPesoIdeal(dados.altura!!)
             dados.pesoIdeal = pesoIdeal
-            val diferencaPeso = pesoIdeal - dados.peso
+            val diferencaPeso = pesoIdeal - dados.peso!!
 
             val df = DecimalFormat("0.00")
             val pesoIdealFormatado = df.format(pesoIdeal)

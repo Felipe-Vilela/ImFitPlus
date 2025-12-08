@@ -65,6 +65,6 @@ class ResumoSaudeActivity : AppCompatActivity() {
         }
     }
     private fun calcularRecomendacaoAgua(): Double {
-        return (dadosPessoais.peso * 35) /1000
+        return (dadosPessoais.peso!! * 35) /1000
     }
 }

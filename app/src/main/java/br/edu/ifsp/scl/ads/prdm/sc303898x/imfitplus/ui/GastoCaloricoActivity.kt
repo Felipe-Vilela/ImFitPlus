@@ -40,7 +40,7 @@ class GastoCaloricoActivity : AppCompatActivity() {
         }
 
         val fatorAtividade = obterFatorAtividade(dadosPessoais.nivelAtividade)
-        val tmb = calcularTmb(dadosPessoais.peso, dadosPessoais.altura, dadosPessoais.idade, dadosPessoais.sexo)
+        val tmb = calcularTmb(dadosPessoais.peso!!, dadosPessoais.altura!!, dadosPessoais.idade!!, dadosPessoais.sexo)
         val gcd = calcularGcd(tmb, fatorAtividade)
 
         dadosPessoais.tmb = tmb

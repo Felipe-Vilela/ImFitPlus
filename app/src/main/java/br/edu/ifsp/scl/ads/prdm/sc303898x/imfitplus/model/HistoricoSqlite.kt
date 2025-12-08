@@ -3,6 +3,7 @@ package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model
 import android.content.ContentValues
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.R
@@ -74,7 +75,20 @@ class HistoricoSqlite(context: Context): HistoricoDao {
        historicoDataBase.insert(HISTORICO_TABLE, null, dadosPessoais.toContentValues())
 
     override fun buscarHistorico(id: Int): DadosPessoais {
-        TODO("Not yet implemented")
+        val cursor = historicoDataBase.query(
+            HISTORICO_TABLE,
+            null,
+            "$ID_COLUMN = ?",
+            arrayOf(id.toString()),
+            null,
+            null,
+            null
+        )
+        return if (cursor.moveToFirst()){
+            cursor.toDadosPessoais()
+        }else{
+            DadosPessoais()
+        }
     }
 
     override fun buscarHistoricos(): MutableList<DadosPessoais> {
@@ -103,4 +117,20 @@ class HistoricoSqlite(context: Context): HistoricoDao {
         put(CATEGORIA_COLUMN, categoriaImc)
         put(RECOMENDACAO_AGUA_COLUMN, recomendacaoAgua)
     }
+
+    private fun Cursor.toDadosPessoais() = DadosPessoais(
+        getInt(getColumnIndexOrThrow(ID_COLUMN)),
+        getString(getColumnIndexOrThrow(NOME_COLUMN)),
+        getInt(getColumnIndexOrThrow(IDADE_COLUMN)),
+        getString(getColumnIndexOrThrow(SEXO_COLUMN)),
+        getDouble(getColumnIndexOrThrow(ALTURA_COLUMN)),
+        getDouble(getColumnIndexOrThrow(PESO_COLUMN)),
+        getString(getColumnIndexOrThrow(NIVEL_AT_COLUMN)),
+        getDouble(getColumnIndexOrThrow(IMC_COLUMN)),
+        getDouble(getColumnIndexOrThrow(TMB_COLUMN)),
+        getDouble(getColumnIndexOrThrow(GASTO_CALORICO_COLUMN)),
+        getDouble(getColumnIndexOrThrow(PESO_IDEAL_COLUMN)),
+        getString(getColumnIndexOrThrow(CATEGORIA_COLUMN)),
+        getDouble(getColumnIndexOrThrow(RECOMENDACAO_AGUA_COLUMN)),
+    )
 }

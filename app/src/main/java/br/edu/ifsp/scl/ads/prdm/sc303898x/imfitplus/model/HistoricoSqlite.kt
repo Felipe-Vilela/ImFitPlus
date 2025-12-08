@@ -7,20 +7,6 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.R
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.ALTURA_COLUMN
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.CATEGORIA_COLUMN
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.GASTO_CALORICO_COLUMN
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.HISTORICO_TABLE
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.IDADE_COLUMN
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.ID_COLUMN
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.IMC_COLUMN
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.NIVEL_AT_COLUMN
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.NOME_COLUMN
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.PESO_COLUMN
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.PESO_IDEAL_COLUMN
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.RECOMENDACAO_AGUA_COLUMN
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.SEXO_COLUMN
-import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.HistoricoSqlite.Companion.TMB_COLUMN
 import java.sql.SQLException
 
 class HistoricoSqlite(context: Context): HistoricoDao {

@@ -32,8 +32,9 @@ class HistoricoActivity : AppCompatActivity() {
         setSupportActionBar(ahb.toolbarIn.toolbar)
         supportActionBar?.subtitle = getString(R.string.historico)
 
-        ahb.historicoLv.adapter = historicoAdapter
+        fillHistoricoList()
 
+        ahb.historicoLv.adapter = historicoAdapter
 
         val dadosPessoais: DadosPessoais? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent?.getParcelableExtra(EXTRA_PERFIL, DadosPessoais::class.java)
@@ -48,6 +49,7 @@ class HistoricoActivity : AppCompatActivity() {
                 historicoController.insertHistorico(dp)
             } else {
                 historicoList[position] = dp
+                historicoController.modifyHistorico(dp)
             }
             historicoAdapter.notifyDataSetChanged()
         }
@@ -55,5 +57,13 @@ class HistoricoActivity : AppCompatActivity() {
         ahb.voltarBt.setOnClickListener {
             finish()
         }
+    }
+
+    private fun fillHistoricoList(){
+        historicoList.clear()
+        Thread{
+            historicoList.addAll(historicoController.getHistoricos())
+            historicoAdapter.notifyDataSetChanged()
+        }.start()
     }
 }

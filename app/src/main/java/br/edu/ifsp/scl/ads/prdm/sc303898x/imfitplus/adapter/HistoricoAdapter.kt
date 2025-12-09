@@ -51,18 +51,18 @@ class HistoricoAdapter(
         }
 
         val tlViewHolder = historicoTileView?.tag as TileHistoricoViewHolder
-        tlViewHolder.nomeTv.text = dadosPessoais.nome
-        tlViewHolder.idadeTv.text = dadosPessoais.idade.toString()
-        tlViewHolder.sexoTv.text = dadosPessoais.sexo
-        tlViewHolder.alturaTv.text = dadosPessoais.altura.toString()
-        tlViewHolder.pesoTv.text = dadosPessoais.peso.toString()
-        tlViewHolder.nivelTv.text = dadosPessoais.nivelAtividade
-        tlViewHolder.imcTv.text = dadosPessoais.imc.toString()
-        tlViewHolder.taxaBasalTv.text = dadosPessoais.tmb.toString()
-        tlViewHolder.gastoTv.text = dadosPessoais.gastoCalorico.toString()
-        tlViewHolder.pesoIdealTv.text = dadosPessoais.pesoIdeal.toString()
-        tlViewHolder.categoriaTv.text = dadosPessoais.categoriaImc
-        tlViewHolder.recomendacaoAguaTv.text = dadosPessoais.recomendacaoAgua.toString()
+        tlViewHolder.nomeTv.text = "Nome: ${dadosPessoais.nome}"
+        tlViewHolder.idadeTv.text = "Idade: ${dadosPessoais.idade.toString()}"
+        tlViewHolder.sexoTv.text = "Sexo: ${dadosPessoais.sexo}"
+        tlViewHolder.alturaTv.text = "Altura: ${dadosPessoais.altura.toString()}"
+        tlViewHolder.pesoTv.text = "Peso: ${dadosPessoais.peso.toString()}"
+        tlViewHolder.nivelTv.text = "Nivel Atividade: ${dadosPessoais.nivelAtividade}"
+        tlViewHolder.imcTv.text = "IMC: ${dadosPessoais.imc.toString()}"
+        tlViewHolder.taxaBasalTv.text = "Taxa Basal: ${dadosPessoais.tmb.toString()}"
+        tlViewHolder.gastoTv.text = "Gasto calorico ${dadosPessoais.gastoCalorico.toString()}"
+        tlViewHolder.pesoIdealTv.text = "Peso Ideal ${dadosPessoais.pesoIdeal.toString()}"
+        tlViewHolder.categoriaTv.text = "Categoria: ${dadosPessoais.categoriaImc}"
+        tlViewHolder.recomendacaoAguaTv.text = "Recomendação água: ${dadosPessoais.recomendacaoAgua.toString()}"
 
         return historicoTileView
     }

@@ -10,6 +10,7 @@ import android.widget.TextView
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.R
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.TileHistoricoBinding
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.DadosPessoais
+import java.text.DecimalFormat
 
 class HistoricoAdapter(
     context: Context,
@@ -22,7 +23,6 @@ class HistoricoAdapter(
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val dadosPessoais = historicolist[position]
-
         var historicoTileView = convertView
 
         if (historicoTileView == null){
@@ -51,18 +51,21 @@ class HistoricoAdapter(
         }
 
         val tlViewHolder = historicoTileView?.tag as TileHistoricoViewHolder
+
+        val df = DecimalFormat("0.00")
+
         tlViewHolder.nomeTv.text = "Nome: ${dadosPessoais.nome}"
-        tlViewHolder.idadeTv.text = "Idade: ${dadosPessoais.idade.toString()}"
+        tlViewHolder.idadeTv.text = "Idade: ${dadosPessoais.idade}"
         tlViewHolder.sexoTv.text = "Sexo: ${dadosPessoais.sexo}"
-        tlViewHolder.alturaTv.text = "Altura: ${dadosPessoais.altura.toString()}"
-        tlViewHolder.pesoTv.text = "Peso: ${dadosPessoais.peso.toString()}"
         tlViewHolder.nivelTv.text = "Nivel Atividade: ${dadosPessoais.nivelAtividade}"
-        tlViewHolder.imcTv.text = "IMC: ${dadosPessoais.imc.toString()}"
-        tlViewHolder.taxaBasalTv.text = "Taxa Basal: ${dadosPessoais.tmb.toString()}"
-        tlViewHolder.gastoTv.text = "Gasto calorico ${dadosPessoais.gastoCalorico.toString()}"
-        tlViewHolder.pesoIdealTv.text = "Peso Ideal ${dadosPessoais.pesoIdeal.toString()}"
         tlViewHolder.categoriaTv.text = "Categoria: ${dadosPessoais.categoriaImc}"
-        tlViewHolder.recomendacaoAguaTv.text = "Recomendação água: ${dadosPessoais.recomendacaoAgua.toString()}"
+        tlViewHolder.alturaTv.text = "Altura: ${df.format(dadosPessoais.altura ?: 0.0)}"
+        tlViewHolder.pesoTv.text = "Peso: ${df.format(dadosPessoais.peso ?: 0.0)}"
+        tlViewHolder.imcTv.text = "IMC: ${df.format(dadosPessoais.imc ?: 0.0)}"
+        tlViewHolder.taxaBasalTv.text = "Taxa Basal: ${df.format(dadosPessoais.tmb ?: 0.0)}"
+        tlViewHolder.gastoTv.text = "Gasto calorico: ${df.format(dadosPessoais.gastoCalorico ?: 0.0)}"
+        tlViewHolder.pesoIdealTv.text = "Peso Ideal: ${df.format(dadosPessoais.pesoIdeal ?: 0.0)}"
+        tlViewHolder.recomendacaoAguaTv.text = "Recomendação água: ${df.format(dadosPessoais.recomendacaoAgua ?: 0.0)}"
 
         return historicoTileView
     }

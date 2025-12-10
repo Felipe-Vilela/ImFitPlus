@@ -5,14 +5,13 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.Constant
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.DadosPessoais
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.R
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityResumoSaudeBinding
 import java.text.DecimalFormat
 
-class ResumoSaudeActivity : AppCompatActivity() {
+class ResumoSaudeActivity : BaseActivity() {
 
     private val arsb: ActivityResumoSaudeBinding by lazy {
         ActivityResumoSaudeBinding.inflate(layoutInflater)

@@ -7,14 +7,13 @@ import android.widget.AdapterView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.Constant
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.DadosPessoais
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.R
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityDadosPessoaisBinding
 import kotlin.math.pow
 
-class DadosPessoaisActivity : AppCompatActivity() {
+class DadosPessoaisActivity : BaseActivity() {
 
     private val adpb: ActivityDadosPessoaisBinding by lazy {
         ActivityDadosPessoaisBinding.inflate(layoutInflater)

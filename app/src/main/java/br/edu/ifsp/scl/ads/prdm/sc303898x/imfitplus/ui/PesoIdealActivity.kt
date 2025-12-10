@@ -5,14 +5,13 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.Constant
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.DadosPessoais
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.R
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityPesoIdealBinding
 import java.text.DecimalFormat
 
-class PesoIdealActivity : AppCompatActivity() {
+class PesoIdealActivity : BaseActivity() {
 
     private val apib: ActivityPesoIdealBinding by lazy {
         ActivityPesoIdealBinding.inflate(layoutInflater)

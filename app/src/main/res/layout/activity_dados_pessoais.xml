@@ -45,14 +45,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_tv" />
 
-        <EditText
-            android:id="@+id/idade_et"
+        <DatePicker
+            android:id="@+id/data_nasc_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:inputType="number"
+            android:inputType="date"
             android:maxLength="3"
             android:hint="@string/hint_idade"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +69,7 @@
             android:layout_marginHorizontal="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/idade_et" />
+            app:layout_constraintTop_toBottomOf="@id/data_nasc_et" />
 
         <RadioGroup
             android:id="@+id/sexo_rg"

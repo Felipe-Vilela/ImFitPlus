@@ -2,6 +2,7 @@ package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.ui
 
 import android.content.Context
 import android.content.Context.LAYOUT_INFLATER_SERVICE
+import android.icu.text.UFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,11 @@ class HistoricoAdapter(
                 val tileHistoricoViewHolder = TileHistoricoViewHolder(
                     nomeTv,
                     idadeTv,
+                    fcMaxTv,
+                    zonaLeveTv,
+                    queimaGorduraTv,
+                    aerobicaTv,
+                    anaerobicaTv,
                     sexoTv,
                     alturaTv,
                     pesoTv,
@@ -53,9 +59,15 @@ class HistoricoAdapter(
         val tlViewHolder = historicoTileView?.tag as TileHistoricoViewHolder
 
         val df = DecimalFormat("0.00")
+        val fcMax = fcMax(dadosPessoais.idade!!)
 
         tlViewHolder.nomeTv.text = "Nome: ${dadosPessoais.nome}"
         tlViewHolder.idadeTv.text = "Idade: ${dadosPessoais.idade}"
+        tlViewHolder.fcMaxTv.text = "Fc Max: $fcMax"
+        tlViewHolder.zonaLeveTv.text = zonaLeve(fcMax)
+        tlViewHolder.queimaGorduraTv.text = zonaQueimaGordura(fcMax)
+        tlViewHolder.aerobicaTv.text = zonaAerobica(fcMax)
+        tlViewHolder.anaerobicaTv.text = zonaAnaerobica(fcMax)
         tlViewHolder.sexoTv.text = "Sexo: ${dadosPessoais.sexo}"
         tlViewHolder.nivelTv.text = "Nivel Atividade: ${dadosPessoais.nivelAtividade}"
         tlViewHolder.categoriaTv.text = "Categoria: ${dadosPessoais.categoriaImc}"
@@ -72,6 +84,11 @@ class HistoricoAdapter(
     private data class TileHistoricoViewHolder(
         val nomeTv: TextView,
         val idadeTv: TextView,
+        val fcMaxTv: TextView,
+        val zonaLeveTv: TextView,
+        val queimaGorduraTv: TextView,
+        val aerobicaTv: TextView,
+        val anaerobicaTv: TextView,
         val sexoTv: TextView,
         val alturaTv: TextView,
         val pesoTv: TextView,
@@ -83,4 +100,32 @@ class HistoricoAdapter(
         val categoriaTv: TextView,
         val recomendacaoAguaTv: TextView
     )
+
+    private fun fcMax(idade: Int): Int {
+        return 220 - idade
+    }
+
+    private fun zonaLeve(fcMax: Int): String {
+        val freq50 = fcMax * 0.5
+        val freq60 = fcMax * 0.6
+        return "Zona Leve entre: $freq50 - $freq60"
+    }
+
+    private fun zonaQueimaGordura(fcMax: Int): String {
+        val freq60 = fcMax * 0.6
+        val freq70 = fcMax * 0.7
+        return "Zona Queima Gordura entre: $freq60 - $freq70"
+    }
+
+    private fun zonaAerobica(fcMax: Int): String {
+        val freq70 = fcMax * 0.7
+        val freq80 = fcMax * 0.8
+        return "Zona Aerobica entre: $freq70 - $freq80"
+    }
+
+    private fun zonaAnaerobica(fcMax: Int): String {
+        val freq80 = fcMax * 0.8
+        val freq90 = fcMax * 0.9
+        return "Zona Anaerobica entre: $freq80 - $freq90"
+    }
 }

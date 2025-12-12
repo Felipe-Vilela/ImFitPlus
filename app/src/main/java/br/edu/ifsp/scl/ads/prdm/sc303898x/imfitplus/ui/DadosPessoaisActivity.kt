@@ -11,6 +11,8 @@ import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.Constant
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model.DadosPessoais
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.R
 import br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.databinding.ActivityDadosPessoaisBinding
+import java.time.LocalDate
+import java.time.Period
 import kotlin.math.pow
 
 class DadosPessoaisActivity : BaseActivity() {
@@ -74,21 +76,24 @@ class DadosPessoaisActivity : BaseActivity() {
 
     private fun validarEntradas(): DadosPessoais? {
         val nome = adpb.nomeEt.text.toString().trim()
-        val idadeStr = adpb.idadeEt.text.toString().trim()
+        val dataNascStr = adpb.dataNascEt.toString()
+        val diaNasc = adpb.dataNascEt.dayOfMonth
+        val mesNasc = adpb.dataNascEt.month
+        val anoNasc = adpb.dataNascEt.year
         val pesoStr = adpb.pesoEt.text.toString().trim()
         val alturaStr = adpb.alturaEt.text.toString().trim()
         val nivelAtividadeSelecionado = adpb.atividadeSpinner.selectedItem.toString()
 
-        if (nome.isBlank() || idadeStr.isBlank() || pesoStr.isBlank() || alturaStr.isBlank()) {
+        if (nome.isBlank() || dataNascStr.isBlank() || pesoStr.isBlank() || alturaStr.isBlank()) {
             Toast.makeText(this, R.string.erro_campo_vazio, Toast.LENGTH_SHORT).show()
             return null
         }
 
         val altura = alturaStr.toDoubleOrNull()
         val peso = pesoStr.toDoubleOrNull()
-        val idade = idadeStr.toIntOrNull()
+        val birthDate = dataNascStr.toString()
 
-        if (altura == null || altura < 0.5 || peso == null || peso <= 0 || idade == null || idade <= 0) {
+        if (altura == null || altura < 0.5 || peso == null || peso <= 0) {
             Toast.makeText(this, R.string.erro_altura_invalida, Toast.LENGTH_SHORT).show()
             return null
         }
@@ -96,10 +101,11 @@ class DadosPessoaisActivity : BaseActivity() {
         val sexo = if (adpb.masculinoRb.isChecked) "M" else "F"
         val atividade = nivelAtividadeSelecionado.split(" (").first()
         val imcCalculado = calcularImc(peso, altura)
+        val age = calculateAge(LocalDate.of(anoNasc, mesNasc, diaNasc))
 
         return DadosPessoais(
             nome = nome,
-            idade = idade,
+            idade = age,
             sexo = sexo,
             altura = altura,
             peso = peso,
@@ -109,5 +115,10 @@ class DadosPessoaisActivity : BaseActivity() {
     }
     private fun calcularImc(peso: Double, altura: Double): Double {
         return peso / altura.pow(2)
+    }
+
+    private fun calculateAge(birthDate: LocalDate): Int {
+        val currentDate = LocalDate.now()
+        return Period.between(birthDate, currentDate).years
     }
 }

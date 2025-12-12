@@ -44,10 +44,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="3">
 
             <TextView
                 android:id="@+id/alturaTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="3dp"/>
+
+            <TextView
+                android:id="@+id/fcMaxTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -60,6 +67,34 @@
                 android:layout_weight="1"
                 android:layout_marginTop="3dp"/>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/zonaLeveTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="3dp"/>
+
+        <TextView
+            android:id="@+id/queimaGorduraTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="3dp"/>
+
+        <TextView
+            android:id="@+id/aerobicaTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="3dp"/>
+
+        <TextView
+            android:id="@+id/anaerobicaTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="3dp"/>
 
         <TextView
             android:id="@+id/nivelTv"

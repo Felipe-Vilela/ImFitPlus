@@ -2,12 +2,14 @@ package br.edu.ifsp.scl.ads.prdm.sc303898x.imfitplus.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import java.time.LocalDate
 
 @Parcelize
 data class DadosPessoais(
     val id: Int? = -1,
     val nome: String = "",
     val idade: Int? = null,
+    val birthDate: String = "",
     val sexo: String = "",
     val altura: Double ? = null,
     val peso: Double ? = null,

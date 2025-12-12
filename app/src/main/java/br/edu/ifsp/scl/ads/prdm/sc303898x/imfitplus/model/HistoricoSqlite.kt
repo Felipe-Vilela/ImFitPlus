@@ -16,6 +16,8 @@ class HistoricoSqlite(context: Context): HistoricoDao {
         private val ID_COLUMN = "id"
         private val NOME_COLUMN = "nome"
         private val IDADE_COLUMN = "idade"
+        private val DATA_NASC_COLUMN = "dataNasc"
+
         private val SEXO_COLUMN = "sexo"
         private val ALTURA_COLUMN = "altura"
         private val PESO_COLUMN = "peso"
@@ -31,6 +33,7 @@ class HistoricoSqlite(context: Context): HistoricoDao {
                 "$ID_COLUMN INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "$NOME_COLUMN TEXT NOT NULL, " +
                 "$IDADE_COLUMN INTEGER NOT NULL, " +
+                "$DATA_NASC_COLUMN TEXT NOT NULL, " +
                 "$SEXO_COLUMN TEXT NOT NULL, " +
                 "$ALTURA_COLUMN REAL NOT NULL, " +
                 "$PESO_COLUMN REAL NOT NULL, " +
@@ -103,6 +106,7 @@ class HistoricoSqlite(context: Context): HistoricoDao {
     private fun DadosPessoais.toContentValues() = ContentValues().apply {
         put(NOME_COLUMN, nome)
         put(IDADE_COLUMN, idade)
+        put(DATA_NASC_COLUMN, birthDate)
         put(SEXO_COLUMN, sexo)
         put(ALTURA_COLUMN, altura)
         put(PESO_COLUMN, peso)
@@ -119,6 +123,7 @@ class HistoricoSqlite(context: Context): HistoricoDao {
         getInt(getColumnIndexOrThrow(ID_COLUMN)),
         getString(getColumnIndexOrThrow(NOME_COLUMN)),
         getInt(getColumnIndexOrThrow(IDADE_COLUMN)),
+        getString(getColumnIndexOrThrow(DATA_NASC_COLUMN)),
         getString(getColumnIndexOrThrow(SEXO_COLUMN)),
         getDouble(getColumnIndexOrThrow(ALTURA_COLUMN)),
         getDouble(getColumnIndexOrThrow(PESO_COLUMN)),
